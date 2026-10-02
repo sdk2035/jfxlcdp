@@ -1,0 +1,81 @@
+Esta propuesta técnica establece un marco metodológico unificado de Análisis y Diseño UML asistido por IA, diseñado para el desarrollo concurrente de los proyectos en los dominios de robótica, automatización y plataformas low-code (robotics-intelligent-systems y sdk2035).
+
+El objetivo es modelar y estructurar todos los módulos actuales para que queden completamente acoplados por metamodelos estandarizados, sirviendo como entrada nativa e ingesta directa cuando el entorno Low-Code Cloud AI de GraalModelica se encuentre operativo.
+
+1. Visión Holística del Pipeline de Ingesta (GraalModelica Ready)
+ [ Dominio Robótico / IoT ]  ---+
+ (robotics-intelligent-sys)   |
+                              +---> [ Extractor Metamodelo IA ] ---> [ Especificación UML/XMI ] ---> [ GraalModelica Cloud AI ]
+ [ Dominio UI / Low-Code ]   |     (Rascal MPL + LLMs)             (Domain Specific Meta)         (Truffle Multi-Physics Engine)
+ (sdk2035/jfxlcdp)            ---+
+2. Marco Metodológico: Metamodelo de Dominio Unificado (MDD)
+Para garantizar la interoperabilidad con GraalModelica (que combina la modelación físico-matemática de Modelica con el runtime políglota Truffle de GraalVM), el análisis UML concurrente no se limita a diagramas estáticos tradicionales, sino a la generación de Perfiles UML / XMI Declarativos:
+
+Dominio Robótico/Control: Modelado mediante el perfil UML MARTE (Modeling and Analysis of Real-Time and Embedded Systems) para representar bloques de ecuaciones, cinemática, flujo de señales y nodos ROS 2.
+
+Dominio UI/Desktop/Cloud: Modelado mediante el perfil UML SysML / UI Statecharts para mapear los layouts JSON/XML de jfxlcdp como máquinas de estado reactivas y binding de datos.
+
+3. Fases de Ejecución Asistida por IA (Sincronización Concurrente)
+Plaintext
+[ FASE 1 ] Extracción Estática & Modelado XMI  (Semanas 1-4)
+[ FASE 2 ] Refactorización a Bloques Cyber-Físicos UML  (Semanas 5-8)
+[ FASE 3 ] Mapeo Metamodular a Ecuaciones Modelica/Truffle  (Semanas 9-12)
+Fase 1: Extracción Estática de Metadatos mediante Rascal + IA (Semanas 1–4)
+Acción: Ejecución de scripts Rascal MPL sobre las bases de código de ambos repositorios para extraer el Grafo de Clases, Eventos y Dependencias.
+
+Entregable IA: Conversión automática del AST a un archivo .xmi (XML Metadata Interchange) unificado.
+
+Fase 2: Refactorización Concurrente a Bloques Cyber-Físicos (Semanas 5–8)
+Acción: Aplicación de prompts estructurados para transformar componentes JavaFX y algoritmos Python/C++ en Bloques Cyber-Físicos Reutilizables.
+
+Entregable IA: Diagramas UML de Componentes y Clases con estereotipos <CyberPhysicalBlock>, <ReactiveBinding> y <PhysicalConnector>.
+
+Fase 3: Mapeo Directo a Sintaxis GraalModelica (Semanas 9–12)
+Acción: Generación de transformadores AST que convierten las clases UML y conectores en representaciones AST de Modelica en tiempo de compilación.
+
+Entregable IA: Módulos en formato .mo / GraalModelica DSL listos para ingesta en el motor Cloud.
+
+4. Prompts de Alto Nivel para Generación del Metamodelo
+Prompt 1: Generación de Perfil UML Cyber-Físico para GraalModelica
+Plaintext
+Actúa como un Ingeniero de Software de Modelado Cyber-Físico y Metaprogramación.
+Toma el siguiente grafo AST extraído por Rascal MPL de los proyectos 'robotics-intelligent-systems' y 'jfxlcdp':
+
+[INSERTAR_XMI_O_AST_RASCAL]
+
+Transforma esta estructura en un Diagrama de Clases UML compatible con SysML/MARTE en formato PlantUML, etiquetando:
+1. Nodos de control y señales físicas como <<ModelicaBlock>> con sus variables de entrada/salida (InPort/OutPort).
+2. Controladores de interfaz JavaFX como <<UIReactiveView>> con eventos bidireccionales.
+3. Asegura que la separación entre la lógica de ecuaciones/control y la capa de presentación sea 100% desacoplada mediante un patrón Mediator.
+Prompt 2: Traducción de Diagramas de Secuencia UML a GraalModelica DSL
+Plaintext
+Dada la siguiente especificación de diagrama de secuencia UML entre la consola jfxlcdp y los motores del sistema robótico:
+
+[INSERTAR_DIAGRAMA_SECUENCIA_UML]
+
+Genera la definición de interfaz en GraalModelica (DSL sobre Truffle API) que:
+1. Mapee las llamadas síncronas/asíncronas a conectores causales y no causales de Modelica (connectors).
+2. Exponga las propiedades del layout como variables continuas o discretas (Real, Integer, Boolean) accesibles por el compilador AOT de GraalVM.
+5. Estructura de Salida: Plantilla UML-GraalModelica Ready
+Ejemplo de cómo la IA mapeará un componente UML al estándar de ingesta de GraalModelica:
+
+Fragmento de código
+@startuml
+package "GraalModelica Ingestion Spec" {
+    class RobotControlBlock <<ModelicaBlock>> {
+        + Real torque_input
+        + Real position_output
+        + computeKinematics()
+    }
+
+    class JFXTelemetryPanel <<UIReactiveView>> {
+        + Property<Double> positionProperty
+        + bindToSignal()
+    }
+
+    RobotControlBlock "outPort" --> "inPort" JFXTelemetryPanel : <<ReactiveBinding>>
+}
+@enduml
+6. Nombre del Archivo y Descripción del Commit
+Ruta Recomendada del Archivo
+docs/architecture/uml-ai-graalmodelica-proposal.md
