@@ -1,0 +1,56 @@
+<mxfile host="Electron">
+  <diagram name="Arquitectura JFXLCDP" id="2ALSJT6uKmQXSYRtmc6x">
+    <mxGraphModel dx="2560" dy="1631" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="zU41Na5FLl0ZucKlEjIf-1" parent="1" style="swimlane;whiteSpace=wrap;html=1;fillColor=#ebf5fb;strokeColor=#2980b9;fontStyle=1" value="CAPA DE DISEÑO VISUAL (Visual IDE / Studio)" vertex="1">
+          <mxGeometry height="420" width="320" x="40" y="60" as="geometry" />
+        </mxCell>
+        <mxCell id="zU41Na5FLl0ZucKlEjIf-2" parent="zU41Na5FLl0ZucKlEjIf-1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#3498db;fontColor=#ffffff;fontStyle=1;" value="Visual Canvas &amp; Drag-and-Drop&#xa;(Component Palette)" vertex="1">
+          <mxGeometry height="60" width="260" x="30" y="50" as="geometry" />
+        </mxCell>
+        <mxCell id="zU41Na5FLl0ZucKlEjIf-3" parent="zU41Na5FLl0ZucKlEjIf-1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#2980b9;fontColor=#ffffff;" value="Property &amp; Event Inspector&#xa;(Data Binding Rules)" vertex="1">
+          <mxGeometry height="60" width="260" x="30" y="140" as="geometry" />
+        </mxCell>
+        <mxCell id="zU41Na5FLl0ZucKlEjIf-4" parent="zU41Na5FLl0ZucKlEjIf-1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1f618d;fontColor=#ffffff;" value="Metadata Generator&#xa;(JSON / XML Layout Definition)" vertex="1">
+          <mxGeometry height="60" width="260" x="30" y="230" as="geometry" />
+        </mxCell>
+        <mxCell id="zU41Na5FLl0ZucKlEjIf-5" parent="zU41Na5FLl0ZucKlEjIf-1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1a5276;fontColor=#ffffff;" value="Exporter &amp; Native Bundler&#xa;(JPackage / GraalVM Native Image)" vertex="1">
+          <mxGeometry height="60" width="260" x="30" y="320" as="geometry" />
+        </mxCell>
+        <mxCell id="zU41Na5FLl0ZucKlEjIf-6" parent="1" style="swimlane;whiteSpace=wrap;html=1;fillColor=#f9ebea;strokeColor=#c0392b;fontStyle=1" value="CORE ENGINE &amp; RUNTIME (Metadata Driven)" vertex="1">
+          <mxGeometry height="420" width="360" x="400" y="60" as="geometry" />
+        </mxCell>
+        <mxCell id="zU41Na5FLl0ZucKlEjIf-7" parent="zU41Na5FLl0ZucKlEjIf-6" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e74c3c;fontColor=#ffffff;fontStyle=1;" value="JSON/XML Layout Parser&#xa;&amp; Schema Validator" vertex="1">
+          <mxGeometry height="60" width="280" x="40" y="50" as="geometry" />
+        </mxCell>
+        <mxCell id="zU41Na5FLl0ZucKlEjIf-8" parent="zU41Na5FLl0ZucKlEjIf-6" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c0392b;fontColor=#ffffff;fontStyle=1;" value="Dynamic JavaFX UI Factory&#xa;(Scene Graph Builder)" vertex="1">
+          <mxGeometry height="60" width="280" x="40" y="140" as="geometry" />
+        </mxCell>
+        <mxCell id="zU41Na5FLl0ZucKlEjIf-9" parent="zU41Na5FLl0ZucKlEjIf-6" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#922b21;fontColor=#ffffff;" value="Reactive Event &amp; Data Bus&#xa;(JavaFX Properties &amp; Event Handlers)" vertex="1">
+          <mxGeometry height="60" width="280" x="40" y="230" as="geometry" />
+        </mxCell>
+        <mxCell id="zU41Na5FLl0ZucKlEjIf-10" parent="zU41Na5FLl0ZucKlEjIf-6" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#7b241c;fontColor=#ffffff;" value="Plugin &amp; Component Registry&#xa;(Custom Controls Extension System)" vertex="1">
+          <mxGeometry height="60" width="280" x="40" y="320" as="geometry" />
+        </mxCell>
+        <mxCell id="zU41Na5FLl0ZucKlEjIf-11" parent="1" style="swimlane;whiteSpace=wrap;html=1;fillColor=#e8f8f5;strokeColor=#16a085;fontStyle=1" value="PLATFORM &amp; DATA SERVICES" vertex="1">
+          <mxGeometry height="420" width="320" x="800" y="60" as="geometry" />
+        </mxCell>
+        <mxCell id="zU41Na5FLl0ZucKlEjIf-12" parent="zU41Na5FLl0ZucKlEjIf-11" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1bc4a1;fontColor=#ffffff;" value="REST / DB / GraphQL Connectors&#xa;(Backend Service Integration)" vertex="1">
+          <mxGeometry height="60" width="260" x="30" y="80" as="geometry" />
+        </mxCell>
+        <mxCell id="zU41Na5FLl0ZucKlEjIf-13" parent="zU41Na5FLl0ZucKlEjIf-11" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#16a085;fontColor=#ffffff;" value="State &amp; Persistence Manager&#xa;(Local Cache &amp; Session State)" vertex="1">
+          <mxGeometry height="60" width="260" x="30" y="180" as="geometry" />
+        </mxCell>
+        <mxCell id="zU41Na5FLl0ZucKlEjIf-14" parent="zU41Na5FLl0ZucKlEjIf-11" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#34495e;fontColor=#ffffff;" value="Application Repositories&#xa;(SQL / NoSQL / Remote APIs)" vertex="1">
+          <mxGeometry height="80" width="120" x="100" y="290" as="geometry" />
+        </mxCell>
+        <mxCell id="zU41Na5FLl0ZucKlEjIf-15" edge="1" parent="1" source="zU41Na5FLl0ZucKlEjIf-4" target="zU41Na5FLl0ZucKlEjIf-7" />
+        <mxCell id="zU41Na5FLl0ZucKlEjIf-16" edge="1" parent="1" source="zU41Na5FLl0ZucKlEjIf-8" target="zU41Na5FLl0ZucKlEjIf-9" />
+        <mxCell id="zU41Na5FLl0ZucKlEjIf-17" edge="1" parent="1" source="zU41Na5FLl0ZucKlEjIf-9" target="zU41Na5FLl0ZucKlEjIf-12" />
+        <mxCell id="zU41Na5FLl0ZucKlEjIf-18" edge="1" parent="1" source="zU41Na5FLl0ZucKlEjIf-12" target="zU41Na5FLl0ZucKlEjIf-14" />
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
