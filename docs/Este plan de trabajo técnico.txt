@@ -1,0 +1,83 @@
+Este plan de trabajo técnico aborda la fase de Análisis, Ingeniería Inversa con IA y Rediseño Metamodular de la plataforma jfxlcdp, utilizando Rascal MPL (Metaprogramming Language) para el análisis estático de código CPython/JavaFX y GraalVM como runtime objetivo multilenguaje.
+
+1. Cronograma e Hitos del Plan de Trabajo (12 Semanas)
+Plaintext
+[ Semanas 1-3 ] Fase 1: Extracción AST & Parsing DSL con Rascal
+[ Semanas 4-6 ] Fase 2: Ingeniería Inversa & Análisis Semántico con IA
+[ Semanas 7-9 ] Fase 3: Síntesis Metamodular & Diagramación UML
+[ Semanas 10-12] Fase 4: Compilación Nativa & Polyglot Runtime en GraalVM
+2. Fases de Ejecución Técnica
+Fase 1: Extracción AST y Análisis Estático con Rascal MPL (Semanas 1–3)
+Objetivo: Mapear la estructura de fuentes de Odoo/JavaFX hacia un modelo de grafos AST (Abstract Syntax Tree) unificado.
+
+Técnica: Crear esquemas de hechos en Rascal (M3 models) para capturar llamadas, tipos y dependencias entre módulos Python C-Extensions y controladores JavaFX.
+
+Fase 2: Ingeniería Inversa Asistida por IA (Semanas 4–6)
+Objetivo: Transformar los grafos AST en especificaciones UML formales (Clases, Secuencia, Componentes).
+
+Técnica: Pasar fragmentos del AST enriquecido y estructuras M3 a LLMs para inferir reglas de negocio, bindings de UI y patrones de interacción.
+
+Fase 3: Síntesis de Meta-Algoritmos Low-Code (Semanas 7–9)
+Objetivo: Definir el DSL de bajo código (Low-Code JSON/XML Schema) que guíe la generación dinámica del Scene Graph en JavaFX.
+
+Técnica: Especificar gramáticas abstractas en Rascal para traducir declaraciones UI directamente a código ejecutable sobre GraalPy/GraalVM.
+
+Fase 4: Despliegue en GraalVM & Polyglot Integration (Semanas 10–12)
+Objetivo: Ejecutar los meta-algoritmos y la interfaz de usuario en un proceso GraalVM unificado sin sobrecoste de llamadas JNI.
+
+Técnica: Compilación Ahead-Of-Time (AOT) usando native-image e integración JavaFX-GraalPy.
+
+3. Prompts de Alto Nivel para la Ingeniería Inversa Asistida por IA
+A continuación se presentan las instrucciones (prompts) estructuradas para ejecutar con modelos IA avanzados durante el proceso de extracción de Rascal hacia UML/Meta-Algoritmos:
+
+Prompt 1: Mapeo de Paquetes y Módulos a UML de Componentes
+Plaintext
+Actúa como un Arquitecto de Software experto en Metamodelado y Metaprogramación.
+Analiza la siguiente representación M3/AST extraída mediante Rascal MPL del proyecto 'jfxlcdp':
+
+[INSERTAR_RESULTADO_RASCAL_M3]
+
+Genera:
+1. Un diagrama de componentes UML en formato PlantUML que represente la arquitectura de paquetes principales.
+2. La identificación de acoplamientos críticos entre el motor de metadatos (Core) y los controles visuales.
+3. Recomendaciones para aislar las dependencias CPython/C-Extensions en adaptadores compatibles con GraalVM.
+Prompt 2: Inferencia de Meta-Algoritmos de Rendering Dinámico
+Plaintext
+Dado el código fuente del parser y los modelos de datos de 'jfxlcdp':
+
+[INSERTAR_CODIGO_PARSER_Y_AST]
+
+Diseña el meta-algoritmo de renderizado en lenguaje pseudocódigo formal que:
+1. Transforme una especificación declarativa JSON/XML en una jerarquía de nodos Node de JavaFX.
+2. Maneje el enlace de datos bidireccional (Property Binding) usando el ReactiveBus.
+3. Optimice el tiempo de inicialización de la escena delegando el JIT a la GraalVM Truffle API.
+4. Código Rascal de Muestra: Extracción del Grafo de Llamadas (M3)
+Script de inicio en Rascal para analizar las clases y métodos del core de jfxlcdp:
+
+Fragmento de código
+module JFXLCDPAnalyzer
+
+import lang::java::m3::Core;
+import lang::java::m3::AST;
+import IO;
+
+public loc jfxlcdpProject = |project://jfxlcdp|;
+
+public void analyzeCoreComponents() {
+    M3 model = createM3FromMavenProject(jfxlcdpProject);
+    
+    // Obtener todas las clases del motor de UI
+    set[loc] uiClasses = { c | <c, _> <- model.containment, isClass(c), /ui/i := c.path };
+    
+    println("Clases del Motor UI encontradas: <size(uiClasses)>");
+    
+    // Extraer relaciones de invocación entre métodos
+    rel[loc, loc] callGraph = model.methodInvocation;
+    
+    for (classLoc <- uiClasses) {
+        println("Analizando dependencias de: <classLoc.path>");
+    }
+}
+5. Nombre del Archivo y Descripción del Commit
+Ruta Recomendada del Archivo
+docs/architecture/low-code-reverse-engineering-plan.md
